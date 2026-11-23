@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import type { DictionaryEntry } from '../types/entry';
 import { getTurkishFirstLetter } from '../utils/turkish';
+import { resolveAssetUrl } from '../utils/url';
 
 interface EntryCardProps {
   entry: DictionaryEntry;
@@ -51,7 +52,7 @@ export function EntryCard({
       {/* Square Minimalist Illustration Frame */}
       <div className="relative aspect-square w-full overflow-hidden border-b border-[#181B1F]/10 bg-[#F9F4E7]">
         <img
-          src={entry.image}
+          src={resolveAssetUrl(entry.image)}
           alt={entry.title}
           loading={index < 6 ? 'eager' : 'lazy'}
           decoding="async"

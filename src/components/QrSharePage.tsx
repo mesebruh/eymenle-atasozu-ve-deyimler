@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
 import QRCode from 'qrcode';
 import { ArrowLeft, Download, Printer, QrCode } from 'lucide-react';
+import { getHomeUrl } from '../utils/url';
 
 export function QrSharePage() {
-  const [targetUrl, setTargetUrl] = useState<string>(() =>
-    typeof window !== 'undefined' ? window.location.origin : 'https://eymenle-atasozu.vercel.app',
-  );
+  const [targetUrl, setTargetUrl] = useState<string>(() => getHomeUrl());
   const [svgMarkup, setSvgMarkup] = useState<string>('');
   const [pngDataUrl, setPngDataUrl] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
@@ -80,7 +79,7 @@ export function QrSharePage() {
       <div className="mx-auto max-w-3xl">
         <div className="no-print mb-6 flex items-center justify-between">
           <a
-            href="/"
+            href={import.meta.env.BASE_URL}
             className="inline-flex items-center gap-2 rounded-xl border-[1.5px] border-[#181B1F] bg-[#FFFDF9] px-4 py-2 text-sm font-bold text-[#181B1F] shadow-[3px_3px_0_#181B1F] transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[4px_4px_0_#181B1F]"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -131,14 +130,14 @@ export function QrSharePage() {
                 htmlFor="qr-target-url"
                 className="block text-xs font-bold tracking-wider text-[#5A564E] uppercase"
               >
-                Hedef Site Adresi (Vercel linkin otomatik algılanır)
+                Hedef Site Adresi (Canlı site linkin otomatik algılanır)
               </label>
               <input
                 id="qr-target-url"
                 type="url"
                 value={targetUrl}
                 onChange={(e) => setTargetUrl(e.target.value)}
-                placeholder="https://siteniz.vercel.app"
+                placeholder="https://mesebruh.github.io/eymenpepe/"
                 className="mt-2 w-full rounded-xl border-[1.5px] border-[#181B1F]/25 bg-[#FAF6EE] px-4 py-2.5 text-sm font-medium text-[#181B1F] transition-colors focus:border-[#181B1F] focus:bg-[#FFFDF9] focus:outline-none"
               />
             </div>

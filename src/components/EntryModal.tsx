@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import type { DictionaryEntry } from '../types/entry';
 import { getTurkishFirstLetter } from '../utils/turkish';
+import { resolveAssetUrl } from '../utils/url';
 
 interface EntryModalProps {
   entry: DictionaryEntry | null;
@@ -189,7 +190,7 @@ export function EntryModal({
                     </div>
                   ) : (
                     <img
-                      src={entry.image}
+                      src={resolveAssetUrl(entry.image)}
                       alt={entry.title}
                       className="h-full w-full object-cover"
                     />

@@ -15,18 +15,27 @@ import {
   sortEntriesTurkish,
 } from './utils/turkish';
 
+function isQrLocation(): boolean {
+  if (typeof window === 'undefined') return false;
+  const cleanPath = window.location.pathname.replace(/\/+$/, '');
+  const hash = window.location.hash.replace(/\/+$/, '');
+  return cleanPath.endsWith('/qr') || hash === '#qr' || hash === '#/qr';
+}
+
 export default function App() {
-  const [pathname, setPathname] = useState<string>(() =>
-    typeof window !== 'undefined' ? window.location.pathname : '/',
-  );
+  const [isQr, setIsQr] = useState<boolean>(() => isQrLocation());
 
   useEffect(() => {
-    const onPopState = () => setPathname(window.location.pathname);
-    window.addEventListener('popstate', onPopState);
-    return () => window.removeEventListener('popstate', onPopState);
+    const syncLocation = () => setIsQr(isQrLocation());
+    window.addEventListener('popstate', syncLocation);
+    window.addEventListener('hashchange', syncLocation);
+    return () => {
+      window.removeEventListener('popstate', syncLocation);
+      window.removeEventListener('hashchange', syncLocation);
+    };
   }, []);
 
-  if (pathname === '/qr' || pathname === '/qr/') {
+  if (isQr) {
     return <QrSharePage />;
   }
 

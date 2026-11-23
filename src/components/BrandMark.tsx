@@ -1,7 +1,7 @@
 export function BrandMark() {
   return (
     <a
-      href="/"
+      href={import.meta.env.BASE_URL}
       className="group inline-flex items-center gap-3.5 text-left focus:outline-none"
       aria-label="Eymenle Atasözü ve Deyimler Ana Sayfa"
     >
