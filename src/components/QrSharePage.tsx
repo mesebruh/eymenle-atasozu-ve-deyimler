@@ -137,7 +137,7 @@ export function QrSharePage() {
                 type="url"
                 value={targetUrl}
                 onChange={(e) => setTargetUrl(e.target.value)}
-                placeholder="https://mesebruh.github.io/eymenpepe/"
+                placeholder="https://mesebruh.github.io/eymenle-atasozu-ve-deyimler/"
                 className="mt-2 w-full rounded-xl border-[1.5px] border-[#181B1F]/25 bg-[#FAF6EE] px-4 py-2.5 text-sm font-medium text-[#181B1F] transition-colors focus:border-[#181B1F] focus:bg-[#FFFDF9] focus:outline-none"
               />
             </div>

@@ -8,7 +8,7 @@ export function resolveAssetUrl(path: string): string {
 
 export function getHomeUrl(): string {
   if (typeof window === 'undefined') {
-    return 'https://mesebruh.github.io/eymenpepe/';
+    return 'https://mesebruh.github.io/eymenle-atasozu-ve-deyimler/';
   }
   const base = import.meta.env.BASE_URL || '/';
   return new URL(base, window.location.origin).href;
